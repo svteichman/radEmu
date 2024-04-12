@@ -91,6 +91,7 @@
 <span>  inner_maxit <span class="op">=</span> <span class="fl">25</span>,</span>
 <span>  max_step <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  trackB <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  return_nullB <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  return_both_score_pvals <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -267,6 +268,10 @@ will be rescaled if a step in any parameter exceeds this value. Defaults to 0.5.
 <dt>trackB</dt>
 <dd><p>logical: should values of B be recorded across optimization
 iterations and be returned? Primarily used for debugging. Default is FALSE.</p></dd>
+
+
+<dt>return_nullB</dt>
+<dd><p>logical: should values of B under null hypothesis be returned. Primarily used for debugging. Default is FALSE.</p></dd>
 
 
 <dt>return_both_score_pvals</dt>
