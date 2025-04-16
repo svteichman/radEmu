@@ -9,6 +9,8 @@
 #' @param j_ref column index of convenience constraint
 #' @param constraint_fn constraint function
 #' @param constraint_grad_fn gradient of constraint fn
+#' @param time_limit Optional time limit (in minutes), after which robust score tests will be cut off. 
+#' Default is NULL. 
 #' @param rho_init where to start quadratic penalty parameter
 #' @param tau how much to increment rho by each iteration
 #' @param kappa cutoff above which to increment rho. If distance to feasibility doesn't shrink by at least this factor in an iteration, increment rho by tau.
@@ -33,6 +35,9 @@
 #' `Bs` is a data frame containing values of B by iteration if `trackB` was set 
 #' equal to TRUE (otherwise it contains a NULL value).
 #' 
+#' 
+#' @importFrom R.utils withTimeout
+#' 
 fit_null <- function(B,
                      Y, 
                      X, 
@@ -42,6 +47,7 @@ fit_null <- function(B,
                      j_ref, 
                      constraint_fn, 
                      constraint_grad_fn, 
+                     time_limit = NULL, 
                      rho_init = 1, 
                      tau = 1.2, 
                      kappa = 0.8, 
@@ -59,6 +65,12 @@ fit_null <- function(B,
   J <- ncol(Y)
   n <- nrow(Y)
   p <- ncol(X)
+  
+  if (is.null(time_limit)) {
+    timeout_info <- NULL
+  } else {
+    timeout_info <- list()
+  }
   
   #store cols of B to update in a vector
   j_to_update <- (1:J)[(1:J) != j_ref]
@@ -123,6 +135,7 @@ fit_null <- function(B,
   use_max_inner_it <- FALSE
   B_diff <- Inf
   
+  # start timelimit here! 
   while((abs(gap) > constraint_tol | B_diff> B_tol #outer loop
   ) & iter <= maxit) {
     
@@ -238,6 +251,8 @@ fit_null <- function(B,
     
   }
   
+  # end time limit here! 
+  
   return(list("B" = B,
               "k_constr" = k_constr,
               "j_constr" = j_constr,
@@ -247,6 +262,7 @@ fit_null <- function(B,
               "gap" = gap,
               "u" = u,
               "rho" = rho,
-              "Bs" = Bs))
+              "Bs" = Bs,
+              "timeout_info" = timeout_info))
 }
 

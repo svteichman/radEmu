@@ -27,6 +27,8 @@
 #' pseudohuber loss).
 #' @param constraint_grad_fn function returning gradient of constraint function (as 
 #' a function of a row of B)
+#' @param time_limit Optional time limit (in minutes), after which robust score tests will be cut off. 
+#' Default is NULL. 
 #' @param rho_init numeric: value at which to initiate rho parameter in augmented Lagrangian
 #' algorithm. Default is 1.
 #' @param tau numeric: value to scale rho by in each iteration of augmented Lagrangian
@@ -100,6 +102,7 @@ score_test <- function(B, #B (MPLE)
                        j_constr,
                        constraint_fn, #constraint function
                        constraint_grad_fn, #gradient of constraint fn
+                       time_limit = NULL,
                        rho_init = 1,
                        tau = 2,
                        kappa = 0.8,
@@ -147,7 +150,8 @@ score_test <- function(B, #B (MPLE)
                                     maxit = maxit,
                                     inner_maxit = inner_maxit,
                                     verbose = verbose,
-                                    trackB = trackB
+                                    trackB = trackB,
+                                    time_limit = time_limit
                                     # I = I,
                                     # Dy = Dy
     ))
@@ -229,7 +233,8 @@ retrying with smaller penalty scaling parameter tau and larger inner_maxit.")
               "null_B" = constrained_fit$B,
               # "score_stats" = constrained_fit$score_stats,
               "Bs" = constrained_fit$Bs,
-              "niter" = constrained_fit$niter))
+              "niter" = constrained_fit$niter,
+              "timeout_info" = constrained_fit$timeout_info))
   } else{ 
     #for simulations -- if we want to return both the score p-value using
     #information from full model fit and from null model
@@ -278,7 +283,8 @@ retrying with smaller penalty scaling parameter tau and larger inner_maxit.")
                   "null_B" = constrained_fit$B,
                   # "score_stats" = constrained_fit$score_stats,
                   "Bs" = constrained_fit$Bs,
-                  "niter" = constrained_fit$niter))
+                  "niter" = constrained_fit$niter,
+                  "timeout_info" = constrained_fit$timeout_info))
     }
 
 

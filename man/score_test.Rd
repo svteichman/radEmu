@@ -13,6 +13,7 @@ score_test(
   j_constr,
   constraint_fn,
   constraint_grad_fn,
+  time_limit = NULL,
   rho_init = 1,
   tau = 2,
   kappa = 0.8,
@@ -54,6 +55,9 @@ pseudohuber loss).}
 
 \item{constraint_grad_fn}{function returning gradient of constraint function (as
 a function of a row of B)}
+
+\item{time_limit}{Optional time limit (in minutes), after which robust score tests will be cut off.
+Default is NULL.}
 
 \item{rho_init}{numeric: value at which to initiate rho parameter in augmented Lagrangian
 algorithm. Default is 1.}

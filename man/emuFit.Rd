@@ -18,6 +18,7 @@ emuFit(
   refit = TRUE,
   test_kj = NULL,
   alpha = 0.05,
+  time_limit = NULL,
   return_wald_p = FALSE,
   compute_cis = TRUE,
   run_score_tests = TRUE,
@@ -91,6 +92,9 @@ running score tests.}
 
 \item{alpha}{nominal type 1 error level to be used to construct confidence intervals. Default is 0.05
 (corresponding to 95\% confidence intervals)}
+
+\item{time_limit}{Optional time limit (in minutes), after which robust score tests will be cut off.
+Default is NULL.}
 
 \item{return_wald_p}{logical: return p-values from Wald tests? Default is FALSE.}
 

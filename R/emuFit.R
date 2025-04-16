@@ -29,6 +29,8 @@
 #' running score tests.
 #' @param alpha nominal type 1 error level to be used to construct confidence intervals. Default is 0.05
 #' (corresponding to 95% confidence intervals)
+#' @param time_limit Optional time limit (in minutes), after which robust score tests will be cut off. 
+#' Default is NULL. 
 #' @param return_wald_p logical: return p-values from Wald tests? Default is FALSE.
 #' @param compute_cis logical: compute and return Wald CIs? Default is TRUE.
 #' @param run_score_tests logical: perform robust score testing? Default is TRUE.
@@ -167,6 +169,7 @@ emuFit <- function(Y,
                    refit = TRUE,
                    test_kj = NULL,
                    alpha = 0.05,
+                   time_limit = NULL, 
                    return_wald_p = FALSE,
                    compute_cis = TRUE,
                    run_score_tests = TRUE,
@@ -399,6 +402,10 @@ emuFit <- function(Y,
   
   if (run_score_tests) {
     
+    if (!is.null(time_limit)) {
+      timeout_list <- vector(mode = "list", length = nrow(test_kj))
+    }
+    
     score_test_hyperparams <- data.frame(u = rep(NA, nrow(test_kj)),
                                          rho = NA,
                                          tau = NA,
@@ -473,7 +480,8 @@ emuFit <- function(Y,
                                 I_inv = I_inv,
                                 Dy = Dy,
                                 return_both_score_pvals = return_both_score_pvals,
-                                cluster = cluster)
+                                cluster = cluster,
+                                time_limit = time_limit)
       
       if (return_score_components & !(is.null(test_result))) {
         score_components[[test_ind]] <- test_result$score_pieces
@@ -487,6 +495,10 @@ emuFit <- function(Y,
           trackB_list[[test_ind]] <- NA
         }
       } else {
+        
+        if (!is.null(test_result$timeout_info)) {
+          timeout_list[[test_ind]] <- test_result$timeout_info
+        }
         
         score_test_hyperparams[test_ind, ] <- 
           c(test_result$u, test_result$rho, test_result$tau, test_result$inner_maxit,
@@ -709,6 +721,14 @@ emuFit <- function(Y,
   }
   if (run_score_tests & return_score_components) {
     results$score_components <- score_components
+  }
+  
+  # make this nicer once it's working!
+  if (!is.null(time_limit)) {
+    timeout_list <- timeout_list[!unlist(lapply(timeout_list, is.null))]
+    if (length(timeout_list) > 0) {
+      results$timeout_list <- timeout_list
+    }
   }
   
   return(structure(results, class = "emuFit"))

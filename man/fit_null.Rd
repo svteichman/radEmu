@@ -14,6 +14,7 @@ fit_null(
   j_ref,
   constraint_fn,
   constraint_grad_fn,
+  time_limit = NULL,
   rho_init = 1,
   tau = 1.2,
   kappa = 0.8,
@@ -46,6 +47,9 @@ fit_null(
 \item{constraint_fn}{constraint function}
 
 \item{constraint_grad_fn}{gradient of constraint fn}
+
+\item{time_limit}{Optional time limit (in minutes), after which robust score tests will be cut off.
+Default is NULL.}
 
 \item{rho_init}{where to start quadratic penalty parameter}
 
