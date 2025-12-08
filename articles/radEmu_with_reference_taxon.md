@@ -102,12 +102,12 @@ head(ch_fit_default$coef)
 #> 5  GroupCRC                  Eubacterium siraeum [ref_mOTU_v2_1387]
 #> 6  GroupCRC                      Eubacterium sp. [ref_mOTU_v2_1395]
 #>   category_num    estimate        se      lower     upper score_stat pval
-#> 1            1  1.48637593 0.8965269 -0.2707846 3.2435364         NA   NA
-#> 2            2  2.31316834 0.8270260  0.6922272 3.9341095         NA   NA
-#> 3            3  3.08640201 1.0274037  1.0727278 5.1000763         NA   NA
-#> 4            4 -0.34307844 0.3520048 -1.0329952 0.3468384         NA   NA
-#> 5            5  0.03891827 0.4779880 -0.8979210 0.9757575         NA   NA
-#> 6            6  1.12952082 0.9562351 -0.7446656 3.0037072         NA   NA
+#> 1            1  1.48637866 0.8965589 -0.2708446 3.2436019         NA   NA
+#> 2            2  2.31317107 0.8270519  0.6921791 3.9341630         NA   NA
+#> 3            3  3.08640474 1.0274354  1.0726684 5.1001410         NA   NA
+#> 4            4 -0.34307572 0.3520117 -1.0330060 0.3468546         NA   NA
+#> 5            5  0.03892099 0.4779975 -0.8979369 0.9757789         NA   NA
+#> 6            6  1.12952355 0.9562677 -0.7447267 3.0037738         NA   NA
 ```
 
 The first taxon reported is *F. nucleatum s. vincentii*, and it has an
@@ -206,13 +206,13 @@ head(ch_fit_ref$coef)
 #> 4  GroupCRC         Faecalibacterium prausnitzii [ref_mOTU_v2_1379]
 #> 5  GroupCRC                  Eubacterium siraeum [ref_mOTU_v2_1387]
 #> 6  GroupCRC                      Eubacterium sp. [ref_mOTU_v2_1395]
-#>   category_num   estimate        se      lower       upper score_stat pval
-#> 1            1 -0.8267924 0.4581539 -1.7247576  0.07117277         NA   NA
-#> 2            2  0.0000000 0.0000000  0.0000000  0.00000000         NA   NA
-#> 3            3  0.7732337 0.6760004 -0.5517028  2.09817017         NA   NA
-#> 4            4 -2.6562468 0.8742719 -4.3697882 -0.94270535         NA   NA
-#> 5            5 -2.2742501 1.0329916 -4.2988764 -0.24962375         NA   NA
-#> 6            6 -1.1836475 1.1804619 -3.4973103  1.13001527         NA   NA
+#>   category_num   estimate        se     lower       upper score_stat pval
+#> 1            1 -0.8267924 0.4581605 -1.724771  0.07118572         NA   NA
+#> 2            2  0.0000000 0.0000000  0.000000  0.00000000         NA   NA
+#> 3            3  0.7732337 0.6760066 -0.551715  2.09818234         NA   NA
+#> 4            4 -2.6562468 0.8742978 -4.369839 -0.94265452         NA   NA
+#> 5            5 -2.2742501 1.0330192 -4.298930 -0.24956972         NA   NA
+#> 6            6 -1.1836475 1.1804984 -3.497382  1.13008683         NA   NA
 ```
 
 First, note that the estimate for *F. nucleatum s. animalis* is now $0$,
@@ -286,12 +286,12 @@ head(ch_test_default$coef)
 #> 5  GroupCRC                  Eubacterium siraeum [ref_mOTU_v2_1387]
 #> 6  GroupCRC                      Eubacterium sp. [ref_mOTU_v2_1395]
 #>   category_num    estimate        se      lower     upper score_stat       pval
-#> 1            1  1.48637593 0.8965269 -0.2707846 3.2435364   4.244855 0.03936942
-#> 2            2  2.31316834 0.8270260  0.6922272 3.9341095         NA         NA
-#> 3            3  3.08640201 1.0274037  1.0727278 5.1000763         NA         NA
-#> 4            4 -0.34307844 0.3520048 -1.0329952 0.3468384         NA         NA
-#> 5            5  0.03891827 0.4779880 -0.8979210 0.9757575         NA         NA
-#> 6            6  1.12952082 0.9562351 -0.7446656 3.0037072         NA         NA
+#> 1            1  1.48637866 0.8965589 -0.2708446 3.2436019   4.244871 0.03936905
+#> 2            2  2.31317107 0.8270519  0.6921791 3.9341630         NA         NA
+#> 3            3  3.08640474 1.0274354  1.0726684 5.1001410         NA         NA
+#> 4            4 -0.34307572 0.3520117 -1.0330060 0.3468546         NA         NA
+#> 5            5  0.03892099 0.4779975 -0.8979369 0.9757789         NA         NA
+#> 6            6  1.12952355 0.9562677 -0.7447267 3.0037738         NA         NA
 ```
 
 We have a p-value of $0.039$. This means that with an alpha level of
@@ -331,13 +331,13 @@ head(ch_test_ref$coef)
 #> 4  GroupCRC         Faecalibacterium prausnitzii [ref_mOTU_v2_1379]
 #> 5  GroupCRC                  Eubacterium siraeum [ref_mOTU_v2_1387]
 #> 6  GroupCRC                      Eubacterium sp. [ref_mOTU_v2_1395]
-#>   category_num   estimate        se      lower       upper score_stat     pval
-#> 1            1 -0.8267924 0.4581539 -1.7247576  0.07117277   1.109802 0.292125
-#> 2            2  0.0000000 0.0000000  0.0000000  0.00000000         NA       NA
-#> 3            3  0.7732337 0.6760004 -0.5517028  2.09817017         NA       NA
-#> 4            4 -2.6562468 0.8742719 -4.3697882 -0.94270535         NA       NA
-#> 5            5 -2.2742501 1.0329916 -4.2988764 -0.24962375         NA       NA
-#> 6            6 -1.1836475 1.1804619 -3.4973103  1.13001527         NA       NA
+#>   category_num   estimate        se     lower       upper score_stat      pval
+#> 1            1 -0.8267924 0.4581605 -1.724771  0.07118572   1.109809 0.2921234
+#> 2            2  0.0000000 0.0000000  0.000000  0.00000000         NA        NA
+#> 3            3  0.7732337 0.6760066 -0.551715  2.09818234         NA        NA
+#> 4            4 -2.6562468 0.8742978 -4.369839 -0.94265452         NA        NA
+#> 5            5 -2.2742501 1.0330192 -4.298930 -0.24956972         NA        NA
+#> 6            6 -1.1836475 1.1804984 -3.497382  1.13008683         NA        NA
 ```
 
 Here, the p-value is $0.292$. Therefore, we fail to reject the null

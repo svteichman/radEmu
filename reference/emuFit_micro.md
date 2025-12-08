@@ -19,7 +19,8 @@ emuFit_micro(
   max_abs_B = 50,
   use_working_constraint = TRUE,
   j_ref = NULL,
-  optimize_rows = TRUE
+  optimize_rows = TRUE,
+  use_discrete = TRUE
 )
 ```
 
@@ -94,6 +95,10 @@ emuFit_micro(
   B relative to column constrained to equal zero under working
   constraint before iterating through updates to columns of B
   individually. Default is TRUE.
+
+- use_discrete:
+
+  If discrete design matrix, use fast discrete implementation.
 
 ## Value
 
