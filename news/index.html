@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">radEmu</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.2.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.3.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,6 +22,7 @@
     <li><a class="dropdown-item" href="../articles/intro_radEmu_with_tse.html">Introduction to radEmu with TreeSummarizedExperiment</a></li>
     <li><a class="dropdown-item" href="../articles/intro_radEmu.html">Introduction to radEmu</a></li>
     <li><a class="dropdown-item" href="../articles/parallel_radEmu.html">Parallelizing computation for score tests with radEmu</a></li>
+    <li><a class="dropdown-item" href="../articles/quick_start.html">Quick start with `radEmu`</a></li>
     <li><a class="dropdown-item" href="../articles/radEmu_clustered_data.html">Using radEmu on clustered data</a></li>
     <li><a class="dropdown-item" href="../articles/radEmu_with_reference_taxon.html">Using radEmu with a reference taxon</a></li>
   </ul></li>
@@ -41,8 +42,12 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="2.3.0.0" id="rademu-2300">radEmu 2.3.0.0<a class="anchor" aria-label="anchor" href="#rademu-2300"></a></h2>
+<p>This is a minor release that updates the algorithms to estimate parameters under the alternate and null hypotheses for designs with only discrete covariates. These new algorithms are faster and more stable in most cases. Initial code was developed with assistance from ChatGPT, although final code and responsibility remain with the package owners.</p>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="2.2.0.0" id="rademu-2200">radEmu 2.2.0.0<a class="anchor" aria-label="anchor" href="#rademu-2200"></a></h2>
-<p>This is a minor release that changes the algorithm used to estimate parameters under the null hypothesis in score tests depending on the identifiability constraint that is used. All functions are backwards compatible, but there are major changes in the back-end, which may lead to small changes in results of analyses compared to those that were run before this update.</p>
+<p>This is a minor release that changes the algorithm used to estimate parameters under the null hypothesis in score tests depending on the identifiability constraint that is used. All functions are backwards compatible, but there are major changes in the back-end, which may lead to small changes in results of analyses compared to those that were run before this update. Initial code was developed with assistance from ChatGPT, although final code and responsibility remain with the package owners.</p>
 <div class="section level3">
 <h3 id="changes-2-2-0-0">Changes<a class="anchor" aria-label="anchor" href="#changes-2-2-0-0"></a></h3>
 <p>A different algorithm is used by default to estimate parameters under the null hypothesis. This algorithm is typically faster and more likely to converge to a solution.</p>

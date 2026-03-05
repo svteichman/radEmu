@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">radEmu</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.2.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.3.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +42,7 @@
     <li><a class="dropdown-item" href="../articles/intro_radEmu_with_tse.html">Introduction to radEmu with TreeSummarizedExperiment</a></li>
     <li><a class="dropdown-item" href="../articles/intro_radEmu.html">Introduction to radEmu</a></li>
     <li><a class="dropdown-item" href="../articles/parallel_radEmu.html">Parallelizing computation for score tests with radEmu</a></li>
+    <li><a class="dropdown-item" href="../articles/quick_start.html">Quick start with `radEmu`</a></li>
     <li><a class="dropdown-item" href="../articles/radEmu_clustered_data.html">Using radEmu on clustered data</a></li>
     <li><a class="dropdown-item" href="../articles/radEmu_with_reference_taxon.html">Using radEmu with a reference taxon</a></li>
   </ul>
@@ -69,7 +70,7 @@
                         <h4 data-toc-skip class="author">Sarah
 Teichman</h4>
             
-            <h4 data-toc-skip class="date">2025-12-19</h4>
+            <h4 data-toc-skip class="date">2026-03-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/statdivlab/radEmu/blob/main/vignettes/parallel_radEmu.Rmd" class="external-link"><code>vignettes/parallel_radEmu.Rmd</code></a></small>
       <div class="d-none name"><code>parallel_radEmu.Rmd</code></div>
@@ -194,7 +195,7 @@ we will provide <code>ch_fit</code> to the argument
 <span>                                            j <span class="op">=</span> <span class="va">mOTU_to_test</span><span class="op">)</span>, </span>
 <span>                       Y <span class="op">=</span> <span class="va">small_Y</span><span class="op">)</span></span>
 <span><span class="va">robust_score</span><span class="op">$</span><span class="va">coef</span><span class="op">$</span><span class="va">pval</span><span class="op">[</span><span class="va">mOTU_to_test</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] 0.3017219</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.3017228</span></span></code></pre></div>
 <p>Now, we can see that it took a little while to run our robust score
 test. If we investigate the coefficient table in our
 <code>robust_score</code> output, we can see that we have a p-value of

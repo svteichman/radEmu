@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">radEmu</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.2.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.3.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,6 +22,7 @@
     <li><a class="dropdown-item" href="../articles/intro_radEmu_with_tse.html">Introduction to radEmu with TreeSummarizedExperiment</a></li>
     <li><a class="dropdown-item" href="../articles/intro_radEmu.html">Introduction to radEmu</a></li>
     <li><a class="dropdown-item" href="../articles/parallel_radEmu.html">Parallelizing computation for score tests with radEmu</a></li>
+    <li><a class="dropdown-item" href="../articles/quick_start.html">Quick start with `radEmu`</a></li>
     <li><a class="dropdown-item" href="../articles/radEmu_clustered_data.html">Using radEmu on clustered data</a></li>
     <li><a class="dropdown-item" href="../articles/radEmu_with_reference_taxon.html">Using radEmu with a reference taxon</a></li>
   </ul></li>
@@ -107,8 +108,11 @@ include the other elements of the list as <code>NULL</code>.</p></dd>
 
 <dt id="arg-test-kj">test_kj<a class="anchor" aria-label="anchor" href="#arg-test-kj"></a></dt>
 <dd><p>a data frame whose rows give coordinates (in category j and
-covariate k) of elements of B to construct hypothesis tests for. If <code>test_kj</code>
-is not provided, all elements of B save the intercept row will be tested.</p></dd>
+covariate k) of elements of B to construct hypothesis tests for. <code>k</code> could also be the name of a covariate
+included in <code>X</code> or <code>data</code>. If you don't know which coordinates k correspond to the covariate(s) that you
+would like to test, run the function <code><a href="make_design_matrix.html">radEmu::make_design_matrix()</a></code> in order to view the design matrix,
+and identify which column of the design matrix corresponds to each covariate in your model. This argument
+is required when running score tests.</p></dd>
 
 
 <dt id="arg-match-row-names">match_row_names<a class="anchor" aria-label="anchor" href="#arg-match-row-names"></a></dt>
@@ -163,8 +167,10 @@ the minimizer of the pseudo-Huber loss approaches the median.)</p></dd>
 
 
 <dt id="arg-null-fit-alg">null_fit_alg<a class="anchor" aria-label="anchor" href="#arg-null-fit-alg"></a></dt>
-<dd><p>Which null fitting algorithm to use <code>"fisher_scoring"</code> or <code>"augmented_lagrangian"</code>.
-Default and recommended approach is <code>"fisher_scoring"</code>.</p></dd>
+<dd><p>Which null fitting algorithm to use for score tests: <code>"constraint_sandwich"</code> or
+<code>"augmented_lagrangian"</code>, or <code>"discrete"</code> when design matrix only includes categorical covariates.
+Default and recommended approach is <code>"constraint_sandwich"</code> or <code>"discrete"</code> when approach,
+unless <code>J &lt; 20</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

@@ -110,8 +110,12 @@ well.
 wirbel_sample %>%
   group_by(Country, Group) %>%
   summarize(n = n())
-#> `summarise()` has grouped output by 'Country'. You can override using the
-#> `.groups` argument.
+#> `summarise()` has regrouped the output.
+#> ℹ Summaries were computed grouped by Country and Group.
+#> ℹ Output is grouped by Country.
+#> ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+#> ℹ Use `summarise(.by = c(Country, Group))` for per-operation grouping
+#>   (`?dplyr::dplyr_by`) instead.
 #> # A tibble: 10 × 3
 #> # Groups:   Country [5]
 #>    Country Group     n
@@ -390,8 +394,8 @@ two_robust_score_tests$coef[taxa_to_test, c("covariate", "category", "estimate",
 #> 3   GroupCRC Fusobacterium nucleatum s. nucleatum [ref_mOTU_v2_0777] 3.086405
 #> 36  GroupCRC                 unknown Eubacterium [meta_mOTU_v2_7116] 1.692993
 #>          pval
-#> 3  0.07433294
-#> 36 0.30172188
+#> 3  0.07432482
+#> 36 0.30172281
 ```
 
 The *Fusobacterium nucleatum* mOTU has a robust score test p-value of
