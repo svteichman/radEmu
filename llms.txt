@@ -71,9 +71,6 @@ devtools::install_github("statdivlab/radEmu")
 library(radEmu)
 ```
 
-We are currently only releasing `radEmu` via GitHub. If you’d like us to
-consider submitting to CRAN, please let us know by opening an issue.
-
 ## Use
 
 The vignettes demonstrate example usage of the main functions. Please
