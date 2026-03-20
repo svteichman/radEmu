@@ -45,5 +45,5 @@ parameter `d`.
 
 ``` r
 pseudohuber_median(x = rnorm(10), d = 0.1)
-#> [1] 0.2548283
+#> [1] 0.01387106
 ```

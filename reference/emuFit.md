@@ -49,7 +49,8 @@ emuFit(
 - Y:
 
   an n x J matrix or dataframe of nonnegative observations, or a
-  phyloseq object containing an otu table and sample data.
+  `phyloseq` or `TreeSummarizedExperiment` object containing an otu
+  table and sample data.
 
 - X:
 
@@ -321,131 +322,11 @@ converged, which can be helpful for debugging.
 ## Examples
 
 ``` r
-# data frame example
+# data frame example (for phyloseq and TreeSummarizedExperiment examples, see the vignettes)
 data(wirbel_sample_small)
 data(wirbel_otu_small)
 emuRes <- emuFit(formula = ~ Group, data = wirbel_sample_small, Y = wirbel_otu_small,
                  test_kj = data.frame(k = 2, j = 1), tolerance = 0.01) 
  # here we set large tolerances for the example to run quickly, 
  # but we recommend smaller tolerances in practice
-
-# TreeSummarizedExperiment example (only run this if you have TreeSummarizedExperiment installed)
-# \donttest{
-library("TreeSummarizedExperiment")
-#> Loading required package: SingleCellExperiment
-#> Loading required package: SummarizedExperiment
-#> Loading required package: MatrixGenerics
-#> Loading required package: matrixStats
-#> 
-#> Attaching package: ‘MatrixGenerics’
-#> The following objects are masked from ‘package:matrixStats’:
-#> 
-#>     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
-#>     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
-#>     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
-#>     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
-#>     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
-#>     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
-#>     colWeightedMeans, colWeightedMedians, colWeightedSds,
-#>     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
-#>     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
-#>     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
-#>     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
-#>     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
-#>     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
-#>     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
-#>     rowWeightedSds, rowWeightedVars
-#> Loading required package: GenomicRanges
-#> Loading required package: stats4
-#> Loading required package: BiocGenerics
-#> Loading required package: generics
-#> 
-#> Attaching package: ‘generics’
-#> The following objects are masked from ‘package:base’:
-#> 
-#>     as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
-#>     setequal, union
-#> 
-#> Attaching package: ‘BiocGenerics’
-#> The following objects are masked from ‘package:stats’:
-#> 
-#>     IQR, mad, sd, var, xtabs
-#> The following objects are masked from ‘package:base’:
-#> 
-#>     Filter, Find, Map, Position, Reduce, anyDuplicated, aperm, append,
-#>     as.data.frame, basename, cbind, colnames, dirname, do.call,
-#>     duplicated, eval, evalq, get, grep, grepl, is.unsorted, lapply,
-#>     mapply, match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
-#>     rank, rbind, rownames, sapply, saveRDS, table, tapply, unique,
-#>     unsplit, which.max, which.min
-#> Loading required package: S4Vectors
-#> 
-#> Attaching package: ‘S4Vectors’
-#> The following objects are masked from ‘package:Matrix’:
-#> 
-#>     expand, unname
-#> The following object is masked from ‘package:utils’:
-#> 
-#>     findMatches
-#> The following objects are masked from ‘package:base’:
-#> 
-#>     I, expand.grid, unname
-#> Loading required package: IRanges
-#> Loading required package: Seqinfo
-#> 
-#> Attaching package: ‘GenomicRanges’
-#> The following object is masked from ‘package:magrittr’:
-#> 
-#>     subtract
-#> Loading required package: Biobase
-#> Welcome to Bioconductor
-#> 
-#>     Vignettes contain introductory material; view with
-#>     'browseVignettes()'. To cite Bioconductor, see
-#>     'citation("Biobase")', and for packages 'citation("pkgname")'.
-#> 
-#> Attaching package: ‘Biobase’
-#> The following object is masked from ‘package:MatrixGenerics’:
-#> 
-#>     rowMedians
-#> The following objects are masked from ‘package:matrixStats’:
-#> 
-#>     anyMissing, rowMedians
-#> The following object is masked from ‘package:rlang’:
-#> 
-#>     exprs
-#> Loading required package: Biostrings
-#> Loading required package: XVector
-#> 
-#> Attaching package: ‘Biostrings’
-#> The following object is masked from ‘package:base’:
-#> 
-#>     strsplit
-example("TreeSummarizedExperiment")
-#> 
-#> TrSmmE> data("tinyTree")
-#> 
-#> TrSmmE> # the count table
-#> TrSmmE> count <- matrix(rpois(100, 50), nrow = 10)
-#> 
-#> TrSmmE> rownames(count) <- c(tinyTree$tip.label)
-#> 
-#> TrSmmE> colnames(count) <- paste("C_", 1:10, sep = "_")
-#> 
-#> TrSmmE> # The sample information
-#> TrSmmE> sampC <- data.frame(condition = rep(c("control", "trt"), each = 5),
-#> TrSmmE+                     gender = sample(x = 1:2, size = 10, replace = TRUE))
-#> 
-#> TrSmmE> rownames(sampC) <- colnames(count)
-#> 
-#> TrSmmE> # build a TreeSummarizedExperiment object
-#> TrSmmE> tse <- TreeSummarizedExperiment(assays = list(count),
-#> TrSmmE+                                 colData = sampC,
-#> TrSmmE+                                 rowTree = tinyTree)
-assayNames(tse) <- "counts"
-emuRes <- emuFit(Y = tse, formula = ~ condition, assay_name = "counts", 
-                 test_kj = data.frame(k = 2, j = 1), tolerance = 0.01)
- # here we set large tolerances for the example to run quickly, 
- # but we recommend smaller tolerances in practice
-# }
 ```
